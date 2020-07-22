@@ -1,0 +1,40 @@
+<div class="container border col-8 mt-5 ">
+    <form [formGroup]="HotelForm">
+        <div class="text-center">
+            <h1 class="row-sm-6">Add Hotel</h1>
+        </div>
+        <div class="form-row ">
+            <div class="col">
+                <div class="form-group">
+                    <label for="name">Hotel Name</label>
+                    <input type="text" class="form-control " id="name" name="name" formControlName="name">
+                    <div *ngIf="name.touched && name.invalid">
+                        <small *ngIf="name.errors.required" class="form-text text-danger">Name Required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row ">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Link">Hotel Link</label>
+                    <input type="text" class="form-control " id="Link" name="Link" formControlName="Link">
+                    <div *ngIf="Link.touched && Link.invalid">
+                        <small *ngIf="Link.errors.required" class="form-text text-danger">Link Required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="info">Additionnal information</label>
+                    <textarea rows="5" class="form-control" id="info" name="info"
+                        formControlName="info"></textarea>
+                </div>
+            </div>
+        </div>
+<button type="button" id="submit" name="submit" class="btn btn-primary mb-3"
+    [disabled]=HotelForm.invalid (click)="AddHotel()">Submit</button>
+
+</form>

@@ -1,0 +1,89 @@
+<div class="row" *ngIf="showMsg" >
+    <div class="container col-8 text-center">
+        <p class="alert alert-success">
+            <strong>Article  has been added !</strong>
+
+        </p>
+    </div>
+</div>
+<div class="container mt-5">
+     <form [formGroup]="addForm" (ngSubmit)="addArticle()">
+        <div class="text-center">
+            <h3 class="row-sm-6 ">Please complete the form</h3>
+        </div>
+        <div class="form-row ">
+            <div class="col">
+                <div class="form-group">
+                    <label for="title"><b>title </b></label>
+                    <input type="text" class="form-control " id="title" name="title" formControlName="title">
+                    <div *ngIf="title.touched && title.invalid">
+                        <small *ngIf="title.errors.required" class="form-text text-danger">title Required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="date"><b>date</b></label>
+                    <input type="date" class="form-control" id="date" name="date" formControlName="date">
+                    <div *ngIf="date.touched && date.invalid">
+                      <small *ngIf="date.errors.required" class="form-text text-danger">date Required</small>
+                      <small *ngIf="date.errors.pattern" class="form-text text-danger">Invalid date</small>
+                      
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="description"><b>abstract</b></label>
+                            <select class="browser-default custom-select"formControlName="description">
+                            <option for="description" value="" disabled selected>choose your option</option>
+                            <option for="description" value="Ethics">Ethics</option>
+                            <option for="description" value="Legislation">Legislation</option>
+                            <option for="description" value="Organization">Organization</option>
+                            <option for="description" value="Blood donation">Blood donation</option>
+                            <option for="description" value="Testing">Testing</option>
+                            <option for="description" value="Processing">Processing</option>
+                            <option for="description" value="Pathogens inactivation">Pathogens inactivation</option>
+                            <option for="description" value="Blood components">Blood components</option>
+                            <option for="description" value="Transfusion at the bedside">Transfusion at the bedside</option>
+                            <option for="description" value="Haemovigilance">Haemovigilance</option>
+                            <option for="description" value="Quality management">Quality management</option>
+                            <option for="description" value="Risk management">Risk management</option>
+                            <option for="description" value="Plasma fractionation">Plasma fractionation</option>
+                            <option for="description" value="Others">Others</option>
+                          </select>
+                          
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="link"><b>link</b></label>
+                    <input type="text" class="form-control" id="link" name="link"formControlName="link">
+                    <div *ngIf="link.touched && link.invalid">
+                        <small *ngIf="link.errors.required" class="form-text text-danger">link Required</small>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="type"><b>type</b></label>
+                    <input type="text"class="form-control" id="type" name="type" formControlName="type" >
+                    <div *ngIf="type.touched && type.invalid">
+                        <small *ngIf="type.errors.required" class="form-text text-danger">type Required</small>
+                    </div>
+                </div>
+            </div>
+     
+        
+        <div class="row justify-content-md-center m-3">
+            <button type="submit" class="btn btn-danger " [disabled]=addForm.invalid>Save</button>
+        </div>
+</div>
+     </form>

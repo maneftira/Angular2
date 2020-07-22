@@ -1,0 +1,20 @@
+<div class="container col-8 ">
+    <form [formGroup]="Form">
+        <br style="clear:both">
+        <div class="form-group">
+            <label for="text">Word of the ATMF president</label>
+            <div class="form-row">
+                <textarea class="form-control" id="text" name="text" placeholder="text"
+                    formControlName="text" rows="10"></textarea>
+                <div *ngIf="text.touched && text.invalid">
+                    <small *ngIf="text.errors.required" class="form-text text-danger"> 
+                       Text Required</small>
+                    
+
+                </div>
+            </div>
+        </div>
+        <button type="button" id="submit" name="submit" class="btn btn-primary" (click)="save()"
+            [disabled]=Form.invalid>Submit</button>
+
+    </form>

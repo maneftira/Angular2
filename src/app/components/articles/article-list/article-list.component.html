@@ -1,0 +1,71 @@
+<div class="col">
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-6 mt-5 mb-3">
+        <h1></h1></div>
+    </div>    
+<div class="col">
+    <div class="container-fluid">
+    
+                <h1 style="font: italic">Courses List</h1>
+                
+                 <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-6 mt-5 mb-3">
+                        <h1></h1></div>
+                    </div> 
+                    <tr>
+                       
+                        <td>
+                        <button *ngIf="true" class="btn btn-info my-2 my-sm-0 btn btn-light" [routerLink]="['/articles/add']">add course</button>
+                        </td>
+                        <td>
+                        
+                                
+                                <input [(ngModel)]="title" class="form-control mr-sm-2 mx-2" type="text" placeholder="Search" aria-label="Search"  (input)="Search()">
+                                </td>
+                                <td>
+                                <div class="input-group-append">
+                                    <span class="input-group-text red lighten-3 mx-3" id="basic-text1"><i class="fas fa-search text-grey"
+                                        aria-hidden="true"></i></span>
+                                  </div>
+                            
+                            </td>
+
+                             
+                              </tr>
+              <div *ngIf="articles.length==0" class="alert alert-warning">there is no courses</div>
+        <table *ngIf="articles.length>0" class="table table-sm">
+            <thead>
+                <tr>
+                 <th>#</th>
+                    <th>title</th>
+                    <th>date</th>
+                    <th>abstract</th>
+                    <th>type</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let article of articles;let i = index">
+                    
+                    <th>{{i}}</th>
+                    <td><div style="width: 442px;word-wrap: break-word;">{{article.title}}</div></td>
+                    <td>{{article.date | date: 'dd/MM/yyyy'}}</td>
+                 
+                    <td> <div *ngIf="article.description.length==0" class="alert alert-warning">not available</div>
+                        <div *ngIf="article.description.length!=0" class="alert alert-warning">{{article.description}}</div></td>
+                    <td>{{article.type}}</td>
+                    <td>
+                        <button *ngIf="true" type="button"  class="btn btn-danger" (click)="deleteArticle(article.id,article.index)" ><i class="far fa-trash-alt">Delete</i></button>
+                        <a href="{{article.link}}" class="btn btn-success mx-1">open</a>
+                     </td>
+                </tr>
+                 </tbody>
+        </table>
+    </div>
+         
+     
+    </div>
+</div>

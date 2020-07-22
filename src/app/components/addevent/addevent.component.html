@@ -1,0 +1,124 @@
+<div class="container mt-5">
+    <form [formGroup]="eventForm" (ngSubmit)="AddEvent()">
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Title">Title</label>
+                    <input type="text" class="form-control" id="Title" name="Title" formControlName="Title">
+                    <div *ngIf="Title.touched && Title.invalid">
+                        <small *ngIf="Title.errors.required" class="form-text text-danger">Title Required</small>
+                        <small *ngIf="Title.errors.pattern" class="form-text text-danger">Invalid Title</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" formControlName="description"
+                        rows="5"></textarea>
+                    <div *ngIf="description.touched && description.invalid">
+                        <small *ngIf="description.errors.required" class="form-text text-danger">description
+                            Required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="date"> First Date</label>
+                    <input type="date" class="form-control" id="date" name="date" formControlName="date">
+                    <div *ngIf="date.touched && date.invalid">
+                        <small *ngIf="date.errors.required" class="form-text text-danger">date Required</small>
+                    </div>
+                    <label for="date2">Last Date</label>
+                    <input type="date" class="form-control" id="date2" name="date2" formControlName="date2">
+                    <div *ngIf="date2.touched && date2.invalid">
+                        <small *ngIf="date2.errors.required" class="form-text text-danger">date Required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Word_At_president">Word of the ATMF president</label>
+                    <textarea class="form-control" id="Word_At_president" name="Word_At_president"
+                        formControlName="Word_At_president" rows="5"></textarea>
+                    <div *ngIf="Word_At_president.touched && Word_At_president.invalid">
+                        <small *ngIf="Word_At_president.errors.required" class="form-text text-danger">Word of president
+                            Required</small>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-row">
+                    <label for="inputGroupFileAddon01">Scientific programme</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="Scientificprogram">Day 1</span>
+                        </div>
+                        <div class="custom-file  col-4">
+                            <input type="file" class="custom-file-input " id="Scientificprogram"
+                                aria-describedby="inputGroupFileAddon01" accept="application/pdf"
+                                (change)="onFileSelected1($event)" required>
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Word_Congress_president">Word of Congress president</label>
+                        <textarea class="form-control" id="Word_Congress_president" name="Word_Congress_president"
+                            formControlName="Word_Congress_president" rows="5"></textarea>
+                        <div *ngIf="Word_Congress_president.touched && Word_Congress_president.invalid">
+                            <small *ngIf="Word_Congress_president.errors.required" class="form-text text-danger">Word of
+                                Congress president Required</small>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <button type="button" class="btn btn-success btn-sm" (click)="addcongress()">Add Membre</button>
+
+                    <section class="container border mb-4 p-3" *ngFor=" let mb of committesmb; let i=index;">
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>Scientific Committes membre {{i + 1}}<span style="color:red;">*</span></h5>
+                            </div>
+                            <div class="col-6 text-right">
+                                <button type="button" class="btn btn-danger btn-sm"
+                                    (click)="removecongress(i)">Remove</button>
+                            </div>
+                        </div>
+                        <input type="text" [(ngModel)]="mb.nom" name="c{{i}}" formControlName="c{{i+1}}" required/>
+                    </section>
+                </div>
+                <div class="col-6">
+                    <button type="button" class="btn btn-success btn-sm" (click)="addorganization()">Add Membre</button>
+
+                    <section class="container border mb-4 p-3" *ngFor=" let mb of organizationtable; let i=index;">
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>Organization Committes membre {{i + 1}}<span style="color:red;">*</span> </h5>
+                            </div>
+                            <div class="col-6 text-right">
+                                <button type="button" class="btn btn-danger btn-sm"
+                                    (click)="removeorganization(i)">Remove</button>
+                            </div>
+                        </div>
+                        <input type="text" [(ngModel)]="mb.nom" name="o{{i}}" formControlName="o{{i+1}}"  required/>
+                        
+                    </section>
+
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary mt-3 mb-3" [disabled]=eventForm.invalid||test>Submit</button>
+    </form>
+</div>

@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]="['/']">ATMF</a>
+    <button class="navbar-toggler btn btn-dark" type="button" data-toggle="collapse"
+        data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navbar-dark secondary-color" id="navbarsExampleDefault">
+
+
+
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-primary my-2 my-sm-0 btn btn-dark" [routerLink]="['']">Home</button>
+            <ul class="top-level-menu">
+                <li>
+                    <button class="btn btn-primary my-2 my-sm-0 btn btn-dark">Events</button>
+
+                    <ul class="second-level-menu ">
+                       <li><a [routerLink]="['AddEvent']">Add Event</a></li>
+                        <li><a [routerLink]="['PassedEvents']">Latest Events</a></li>
+
+                        <li>
+                            <a>Upcoming Event</a>
+                            <ul class="third-level-menu">
+                                <li><a [routerLink]="['General']">General Information</a>
+                                    <ul class="third-level-menu">
+                                        <li><a>Congress Committes</a>
+                                            <ul class="third-level-menu mb-5 ">
+                                                <li><a [routerLink]="['ScCommittees']">Scientific Committes</a></li>
+                                                <li><a [routerLink]="['orgCommittees']">Organization Committes</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li><a [routerLink]="['Word of the ATMF president']">Word of ATMF President </a>
+                                        </li>
+                                        <li><a [routerLink]="['Word of the Congress president']">Word of Congress
+                                                President </a></li>
+
+                                    </ul>
+                                </li>
+                                <li><a [routerLink]="['Scientific_programme/day1']" >Scientific Program</a>
+                                </li>
+                                <li><a>Exhibition & Sponsorship</a>
+                                    <ul class="third-level-menu mb-5">
+                                        <li><a [routerLink]="['Sponsors']">Ours Sponsors</a></li>
+                                        <li><a [routerLink]="['SponsorSubmission']">Sponsor Submission</a></li>
+                                        <li><a [routerLink]="['Exhibitor']">Exhibitor Submission</a></li>
+                                        <li><a [routerLink]="['AreaPlan']">Area Plan</a></li>
+                                    </ul>
+                                </li>
+                                <li><a [routerLink]="['abstract']">Submit Abstract</a></li>
+                                <li><a [routerLink]="['Accomodation']"> Accommodation</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <button class="btn btn-info my-2 my-sm-0 mx-3 btn btn-dark" [routerLink]="['/articles']">Education</button>
+            <ul class="top-level-menu">
+                <li>
+                    <button class="btn btn-primary my-2 my-sm-0 btn btn-dark">About</button>
+
+                    <ul class="menu2">
+                        <li><a [routerLink]="['About']">Contact </a></li>
+                        <li><a [routerLink]="['status']">Statutes</a></li>
+                        <li><a [routerLink]="['ethic']">Ethical Code </a></li>
+                        <li><a [routerLink]="['election']">Elections </a></li>
+                        <li><a [routerLink]="['mission']">Missions  </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button class="btn btn-primary my-2 my-sm-0 btn btn-dark">Login</button>
+            <button class="btn btn-primary my-2 my-sm-0 btn btn-dark">Registration</button>
+
+        </form>
+    </div>
+</nav>

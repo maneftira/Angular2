@@ -1,0 +1,139 @@
+
+<div class="row" *ngIf="showMsg" >
+    <div class="container col-8 text-center">
+        <p class="alert alert-success">
+            <strong>Abstract has been send !</strong>
+
+        </p>
+    </div>
+</div>
+<div *ngIf="!admin" class="container border col-8 mt-5">
+    <form [formGroup]="abstractForm" (ngSubmit)="AddAbstract()">
+        <div class="text-center">
+            <h1 class="row-sm-6">Submit Your Paper Here</h1>
+        </div>
+        <div class="form-row ">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Title">Title of the paper</label>
+                    <input type="text" class="form-control " id="Title" name="Title" formControlName="Title">
+                    <div *ngIf="Title.touched && Title.invalid">
+                        <small *ngIf="Title.errors.required" class="form-text text-danger">Title Required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Author">Authors names</label>
+                    <input type="text" class="form-control" id="Author" name="Authors" formControlName="Authors">
+                    <div *ngIf="Authors.touched && Authors.invalid">
+                        <small *ngIf="Authors.errors.required" class="form-text text-danger">Authors names
+                            Required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Presenter">Presenter name</label>
+                    <input type="text" class="form-control" id="Presenter" name="Presenter" formControlName="Presenter">
+                    <div *ngIf="Presenter.touched && Presenter.invalid">
+                        <small *ngIf="Presenter.errors.required" class="form-text text-danger">Presenter name
+                            Required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="PresenterEmail">Presenter email</label>
+                    <input type="email" class="form-control" id="PresenterEmail" name="PresenterEmail"
+                        formControlName="PresenterEmail">
+                    <div *ngIf="PresenterEmail.touched && PresenterEmail.invalid">
+                        <small *ngIf="PresenterEmail.errors.required" class="form-text text-danger">Presenter Email
+                            Required</small>
+                        <small *ngIf="PresenterEmail.errors.email" class="form-text text-danger">Invalid Email
+                        </small>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="WhatsApp">Presenter WhatsApp</label>
+                    <input type="text" class="form-control" id="WhatsApp" name="WhatsApp" formControlName="WhatsApp">
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="MyText">Your Text (Words limit = 500)</label>
+                    <textarea rows="5" class="form-control" id="MyText" name="MyText"
+                        formControlName="MyText"></textarea>
+                    <div *ngIf="MyText.touched && MyText.invalid">
+                        <small *ngIf="MyText.errors.required" class="form-text text-danger">Text
+                            Required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center m-3">
+            <button type="submit" class="btn btn-primary " [disabled]=abstractForm.invalid>Submit</button>
+        </div>
+    </form>
+</div>
+<div *ngIf="admin" class="container mt-5 text-center">
+    <div *ngIf="abstracts.length==0" class="alert alert-warning">there is no abstracts</div>
+<div class="mat-elevation-z8">
+<table  *ngIf="abstracts.length!=0" class="container border mb-5 mrx-1" mat-table [dataSource]="data">
+    
+    
+    <ng-container matColumnDef="Title">
+      <th mat-header-cell *matHeaderCellDef> Title  </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="Authors names">
+      <th mat-header-cell *matHeaderCellDef> Authors names </th>
+      <td mat-cell *matCellDef="let element"> {{element.auther}}</td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="Presenter name">
+      <th mat-header-cell *matHeaderCellDef> Presenter name </th>
+      <td mat-cell *matCellDef="let element">{{element.presenter}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Presenter email">
+      <th mat-header-cell *matHeaderCellDef> Presenter email </th>
+      <td mat-cell *matCellDef="let element"> {{element.pmail}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Presenter WhatsApp">
+      <th mat-header-cell *matHeaderCellDef> Presenter WhatsApp </th>
+      <td mat-cell *matCellDef="let element"> {{element.whatsApp}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Text">
+      <th mat-header-cell *matHeaderCellDef> Text </th>
+      <td mat-cell *matCellDef="let element"><div style="width: 442px;word-wrap: break-word;"><PRE>{{element.text}}</PRE></div></td>
+    </ng-container>
+
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element;let i = index" class="align-center"> <button class="btn btn-danger" (click)="deleteAbstract(element.id,i)" ><i class="far fa-trash-alt"></i></button></td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  </div>
+  </div>

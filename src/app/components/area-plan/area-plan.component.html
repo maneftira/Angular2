@@ -1,0 +1,9 @@
+
+<div *ngIf="!area && admin" class="container border col-4 mt-5">
+    <input  type="file" accept="image/*" (change)="onFileSelected($event)">    
+<button    class="btn btn-success mr-2" (click)="upload(id)">upload Plan </button>
+</div>
+
+<div class="container mt-5 mb-5 d-flex d-flex justify-content-center">
+        <img class="mx-3 " alt="not found"  [src]="Url"  width="800" height="500" />
+</div>

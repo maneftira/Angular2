@@ -1,0 +1,58 @@
+<div class="row" *ngIf="showMsg">
+    <div class="container col-8 text-center">
+        <p class="alert alert-success">
+            <strong>Message has been send !</strong>
+
+        </p>
+    </div>
+</div>
+
+<div class="container col-8 ">
+    <form [formGroup]="ContactForm">
+        <br style="clear:both">
+        <h3 style="margin-bottom: 25px; text-align: center;">Feedback Form</h3>
+        <div class="form-group">
+            <label for="email">Email<span style="color:red;">*</span></label>
+            <div class="form-row">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+                    formControlName="email">
+                <div *ngIf="email.touched && email.invalid">
+                    <small *ngIf="email.errors.required" class="form-text text-danger"> Email
+                        Required</small>
+                    <small *ngIf="email.errors.email" class="form-text text-danger">Invalid Email
+                    </small>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="subject">Subject<span style="color:red;">*</span></label>
+            <div class="form-row">
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
+                    formControlName="subject">
+            </div>
+            <div *ngIf="subject.touched && subject.invalid">
+                <small *ngIf="subject.errors.required" class="form-text text-danger">Subject
+                    Required</small>
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Description<span style="color:red;">*</span></label>
+            <div class="form-row">
+                <textarea class="form-control" type="description" id="description" name="description"
+                    placeholder="Description" formControlName="description" maxlength="140" rows="7"></textarea>
+            </div>
+            <div *ngIf="description.touched && description.invalid">
+                <small *ngIf="description.errors.required" class="form-text text-danger">Description
+                    Required</small>
+
+
+            </div>
+        </div>
+        <button type="button" id="submit" name="submit" class="btn btn-primary pull-left mb-3" (click)="save()"
+            [disabled]=ContactForm.invalid>Submit</button>
+
+    </form>
+</div>

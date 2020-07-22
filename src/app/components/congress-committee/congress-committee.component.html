@@ -1,0 +1,17 @@
+
+  <div class="container col-8 text-center mt-5" *ngIf="!test">
+    <p class="alert alert-warning">
+      <strong>no upcoming event !</strong>
+
+    </p>
+  </div>
+  <div>
+    <div class="mt-5 mx-5" *ngIf="test" style="background-color:#f7f7f7;">
+      <h5 style="color: red;" class="mx-3"> <p>Scientific Committee</p> </h5>
+      <div *ngIf="tab.length>0">
+      <ul *ngFor="let item of tab" >
+        <li class="mx-3">{{item.nom}}</li>
+      </ul>
+    </div>
+    </div>
+  </div>

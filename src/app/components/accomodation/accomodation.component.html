@@ -1,0 +1,30 @@
+<div class="container col-8 text-center mt-5" *ngIf="!test">
+  <p class="alert alert-warning">
+    <strong>no upcoming event !</strong>
+
+  </p>
+</div>
+
+
+<div class="mt-5 mx-5 mb-5" *ngIf="test" style="background-color:#f7f7f7;">
+  <button [routerLink]="['/AddHotel']" routerLinkActive="router-link-active" class="btn btn-primary btn-sm"
+    *ngIf="test&&admin"><i class="fas fa-plus"></i></button>
+  <h4  *ngIf="tab.length>0" style="color: red;" class="mx-5 text-center">
+    <p>Hotels </p>
+  </h4>
+  <div *ngIf="tab.length==0" class="alert alert-warning text-center">there is no Hotels</div>
+
+  <div *ngIf="tab.length>0" class="mx-5">
+    <ul *ngFor="let item of tab">
+      <li class="mx-1">
+        <b>{{item.name}}</b><br>
+        <a href="{{item.link}}">Link</a>
+        <p>{{item.info}}</p>
+
+      </li>
+    </ul>
+
+
+
+
+  </div>

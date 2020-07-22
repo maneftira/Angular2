@@ -1,0 +1,14 @@
+
+    <div class="container col-8 text-center mt-5" *ngIf="!test">
+      <p class="alert alert-warning">
+        <strong>no upcoming event !</strong>
+  
+      </p>
+    </div>
+<div class="mt-5 mx-5" *ngIf="test" style="background-color:#f7f7f7;">
+  <button  *ngIf="!s"  class="btn btn-primary  btn-sm " [routerLink]="['/Congres_president']" routerLinkActive="router-link-active" ><i
+    class="fas fa-plus "></i></button>  
+    <h4 class="mx-5" style="color: red;"> <p>Word of The Congress President</p> </h4>
+    <div  class="mx-5"><pre style="white-space: pre-wrap;">{{s}}</pre></div>
+</div>
+

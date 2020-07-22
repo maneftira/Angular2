@@ -1,0 +1,47 @@
+<div  id="example1" class="border mt-5 mx-5" *ngFor="let i of Tab ;let j=index;">
+
+  <h5 class="mx-3 mt-2">Title: {{i.title}}</h5>
+  <h5 class="mx-3">Start: {{i.date | date:'shortDate'}}</h5>
+  <h5 class="mx-3">End: {{i.datefin | date:'shortDate'}}</h5>
+  <h5 class="mx-3">Description:</h5>
+  <p class="mx-3">{{i.description}}</p>
+  <div class="row mx-3">
+    <h5>Word of the ATMF president:</h5>
+    <button data-toggle="collapse" [attr.data-target]="'#demo' + j" class="btn btn-primary mx-3 btn-sm"><i
+        class="fas fa-plus"></i></button>
+  </div>
+  <div id="demo{{j}}" class="collapse border mx-2 mr-2">
+    <pre class="mx-3" style="white-space: pre-wrap;">{{i.word_At_president}}</pre>
+  </div>
+  <div class="row mx-3 mt-2">
+    <h5>Word of Congress president:</h5>
+    <button data-toggle="collapse" [attr.data-target]="'#demo2' +j" class="btn btn-primary mx-3 btn-sm"><i
+        class="fas fa-plus"></i></button>
+  </div>
+  <div id="demo2{{j}}" class="collapse border mx-2 mr-2">
+    <pre class="mx-3" style="white-space: pre-wrap;">{{i.word_Congress_president}}</pre>
+  </div>
+  <h5 class="mx-3 mt-2">Organisation committee</h5>
+  <div *ngFor="let item of i.org">
+    <ul>
+      <li>
+        <p class="mx-3">{{item.nom}}</p>
+      </li>
+    </ul>
+  </div>
+  <h5 class="mx-3">Scientific committee</h5>
+  <div *ngFor="let item of i.congress">
+    <ul>
+      <li>
+        <p class="mx-3">{{item.nom}}</p>
+      </li>
+    </ul>
+  </div>
+  <h5 class="mx-3">Program</h5>
+  <div class="mb-3 mx-3">
+    <button type="button" class="btn btn-primary " (click)="fonction(i)">Program</button>
+  
+
+  </div>
+
+</div>

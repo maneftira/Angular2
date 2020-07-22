@@ -1,0 +1,200 @@
+
+ 
+  <div class="row" *ngIf="showMsg" >
+    <div class="container col-8 text-center">
+        <p class="alert alert-success">
+            <strong>Submission has been send !</strong>
+
+        </p>
+    </div>
+</div>
+<div class="container col-8 text-center mt-5" *ngIf="!test">
+    <p class="alert alert-warning">
+        <strong>no upcoming event !</strong>
+
+    </p>
+</div>
+<div *ngIf="!admin&&test" class="p-3 mt-5 d-flex justify-content-center">
+    <h1 class="bg-danger text-white">REGISTER AS A SPONSOR</h1>
+</div>
+<div  *ngIf="!admin&&test" class="container border">
+
+    <form [formGroup]="SponsorForm" (ngSubmit)="AddSponsor()">
+        <div class="text-center">
+            <h3 class="row-sm-6 ">Please complete the form</h3>
+        </div>
+        <div class="form-row ">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Company"><b>Company Name </b></label>
+                    <input type="text" class="form-control " id="Company" name="Company" formControlName="Company">
+                    <div *ngIf="Company.touched && Company.invalid">
+                        <small *ngIf="Company.errors.required" class="form-text text-danger">Company Name Required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="VATNr"><b>VAT Nr</b></label>
+                    <input type="text" class="form-control" id="VATNr" name="VATNr" formControlName="VATNr">
+                   
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="PhysicalAddress"><b>Physical Address</b></label>
+                    <input type="text" class="form-control" id="PhysicalAddress" name="PhysicalAddress" formControlName="PhysicalAddress">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="City"><b>Suburb / City</b></label>
+                    <input type="text" class="form-control" id="City" name="City"formControlName="City">
+                    <div *ngIf="City.touched && City.invalid">
+                        <small *ngIf="City.errors.pattern" class="form-text text-danger">City Invalid</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="PostalCode"><b>Postal Code</b></label>
+                    <input type="text"class="form-control" id="PostalCode" name="PostalCode" formControlName="PostalCode" >
+                    <div *ngIf="PostalCode.touched && PostalCode.invalid">
+                        <small *ngIf="PostalCode.errors.pattern" class="form-text text-danger">Postal Code Invalid</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="Country"><b>Country</b></label>
+                    <input type="text" class="form-control" id="Country" name="Country" formControlName="Country">
+                    <div *ngIf="Country.touched && Country.invalid">
+                        <small *ngIf="Country.errors.pattern" class="form-text text-danger">Country Invalid</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="PostalAddress"><b>Postal Address</b></label>
+                    <input type="text" class="form-control" id="PostalAddress" name="PostalAddress" formControlName="PostalAddress">
+                   
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="ContactName"><b>Contact Name</b></label>
+                    <input type="text" class="form-control" id="ContactName" name="ContactName" formControlName="ContactName">
+                   
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Telephone"><b>Telephone</b></label>
+                    <input type="text" class="form-control" id="Telephone" name="Telephone"formControlName="Telephone">
+                    <div *ngIf="Telephone.touched && Telephone.invalid">
+                        <small *ngIf="Telephone.errors.pattern" class="form-text text-danger">Telephone Invalid</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="Fax"><b>Fax</b></label>
+                    <input type="text" class="form-control" id="Fax" name="Fax"  formControlName="Fax">
+                    <div *ngIf="Fax.touched && Fax.invalid">
+                        <small *ngIf="Fax.errors.pattern" class="form-text text-danger">Fax Invalid</small>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Email"><b>Email</b></label>
+                    <input type="text" class="form-control" id="Email" name="Email" formControlName="Email">
+                    <div *ngIf="Email.touched && Email.invalid">
+                        <small *ngIf="Email.errors.required" class="form-text text-danger">Email Required</small>
+                        <small *ngIf="Email.errors.email" class="form-text text-danger">Email Invalid</small>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="Website"><b>Website</b></label>
+                    <input type="text" class="form-control" id="Website" name="Website" formControlName="Website">
+                   
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-md-center m-3">
+            <button type="submit" class="btn btn-primary " [disabled]=SponsorForm.invalid>Submit</button>
+        </div>
+    </form>
+
+
+</div>
+<div *ngIf="admin&&test" class="container mt-5  mx-1 my-5 text-center">
+    <div *ngIf="sponsors.length==0" class="alert alert-warning mx-5 ">there is no sponsors</div>
+    <table class="container border"  *ngIf="sponsors.length>0">
+        <thead>
+            <tr style="outline: thin solid">
+                <th>No.</th>
+                <th>Company</th>
+                <th>VAT Nr</th>
+                <th>Physical Address</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>PostalCode</th>
+                <th>Telephone</th>
+                <th>Fax</th>
+                <th>Website</th>
+                <th>Email</th>
+                <th>Delete</th>
+                <th>Add Logo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let el of sponsors;let i = index" style="outline: thin solid">
+                <td >{{i}}</td>
+                <td >{{el.company}}</td>
+                <td>{{el.vatnr}}</td>
+                <td>{{el.physicalAddress}}</td>
+                <td>{{el.country}}</td>
+                <td>{{el.city}}</td>
+                <td>{{el.postalCode}}</td>
+                <td>{{el.telephone}}</td>
+                <td>{{el.fax}}</td>
+                <td>{{el.website}}</td>
+                <td>{{el.email}}</td>
+                <td><button (click)="deletesponsor(el.id,i)"  class="btn btn-danger mr-2"><i class="far fa-trash-alt"></i></button></td>
+                <td><input *ngIf="el.Logo==null" type="file" accept="image/*" (change)="onFileSelected($event)"></td>
+                <td><button *ngIf="el.Logo==null" class="btn btn-success mr-2" (click)="upload(el.id)">upload</button></td>
+
+                
+            </tr>
+            
+        </tbody>
+
+
+
+    </table>
+</div>
+
+
+
